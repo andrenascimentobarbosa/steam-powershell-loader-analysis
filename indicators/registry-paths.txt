@@ -1,0 +1,57 @@
+Steam Impersonation
+
+HKCU\Software\Valve\Steam
+HKCU\Software\Valve\Steam\ActiveProcess
+HKCU\Software\Valve\Steam\Apps\3545990
+HKCU\Software\Valve\Steam\Apps\3218580
+HKCU\Software\Valve\Steamtools
+
+Observed behavior:
+
+Writes to Steam-related registry paths to mimic a valid Steam installation
+Uses fake or unrelated Steam App IDs to reinforce the illusion of game ownership or activity
+Likely intended to deceive users, security tools, or manual inspection while payload execution continues in the background
+
+
+
+
+Windows Update Tampering (Defense Evasion)
+The script modifies Windows Update configuration to suppress system updates
+
+HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings
+
+
+
+
+Modified values include:
+
+FlightSettingsMaxPauseDays
+PauseFeatureUpdatesStartTime
+PauseFeatureUpdatesEndTime
+PauseQualityUpdatesStartTime
+PauseQualityUpdatesEndTime
+PauseUpdatesStartTime
+PauseUpdatesExpiryTime
+
+Impact:
+
+System-wide update suppression via HKLM
+Prevents security patches and Defender-related updates
+Increases persistence window and reduces likelihood of detection
+
+
+
+
+Summary
+
+This behavior demonstrates:
+
+Abuse of a trusted application registry namespace (Steam)
+User deception through fake application artifacts
+Defense evasion via long-term Windows Update suppression
+
+Assessment:
+
+Reasonable
+Technically accurate
+Clear malicious intent when combined with staged payload delivery
